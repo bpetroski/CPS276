@@ -1,7 +1,7 @@
 <?php
 
     $myname = "Brenden Petroski";
-    $testclass = new addNamesProc();
+    $testclass = new AddNamesProc();
     $output = "";
 
     require_once 'addNameProc.php';
