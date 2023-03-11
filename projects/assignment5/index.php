@@ -1,11 +1,19 @@
 <?php
 
+    $output = "<br>";
 // mkdir("directories/test", 0777);
 // touch("directories/test/test.txt");
 // unlink("directories/test/test.txt");
 // rmdir("directories/test");
 
+    // $output .= $_POST["name-input"];
 
+    if(isset($_POST["submitBtn"])){
+        require_once "Directories.php";
+        $newDir = new Directories();
+        $output = $newDir->testInput();
+        $output .= $newDir->createDir();
+    }
 
 ?>
 
@@ -22,19 +30,20 @@
         <div class="container">
             <h1>File and Directory Assignment</h1>
             <p>Enter a folder name and the contents of a file. Folder names should contain alpha numeric characters only.</p>
-            <form name="Directories" action="Directories.php" method="post">
+            <p><?php echo $output ?></p>
+            <form name="Directories" action="index.php" method="post">
                 <div class="form-group">
                     <label for="name-input">Folder Name:</label>
-                    <input type="text" class="form-control" name="name-input" id="name-input" value="TestFolder123">
+                    <input type="text" class="form-control" name="name-input" id="name-input" value="">
                 </div>
                 <br>
                 <div class="form-group">
                     <label for="text-input">File Content:</label>
-                    <textarea style="height: 500px;" class="form-control"id="text-input" name="text-input">This is where you enter text</textarea>
+                    <textarea style="height: 250px;" class="form-control"id="text-input" name="text-input"></textarea>
                 </div>
                 <br>
-                <div>
-                    <button type="submit" class="btn btn-primary" name="submitBtn" id="submitBtn">Submit</button>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" name="submitBtn" id="submitBtn" value="Submit">
                 </div>
             </form>
         </div>

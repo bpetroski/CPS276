@@ -8,7 +8,7 @@
 
     $output = "";
     if(count($_POST) > 0){
-        echo "fuck shit up";
+        echo "is broken";
         require_once 'addNameProc.php';
         $addName = new AddNamesProc();
         $output = $addName->addClearNames();
@@ -28,7 +28,7 @@
         <p><?php echo "bjp" ?></p>
         <div class="container">
             <h1>Add Names</h1>
-            <form name="Names" action="addNamesProc.php" method="post">
+            <form name="Names" action="index.php" method="post">
                 <div class="form-group">
                     <input type="button" class="btn btn-primary" name="Add-Names" id="add-name-btn" value="Add Names">
                     <button type="button" class="btn btn-primary" name="Clear-Names" id="clear-names-btn">Clear Names</button>
