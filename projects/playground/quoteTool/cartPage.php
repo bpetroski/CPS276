@@ -9,7 +9,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Phones</title>
+        <title>Cart</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="navHeader.css">
     
@@ -28,10 +28,10 @@
                 </nav>
                 <div class="logo-container"> 
                     <div style="padding-right: 15px;">
-                        <a href="https://russet-v8.wccnet.edu/~bjpetroski/projects/playground" target="_self"> <img src="src/tmo-logo-v4.svg" alt="T-Mobile"></a> 
+                        <a href="index.php" target="_self"> <img src="src/tmo-logo-v4.svg" alt="T-Mobile"></a> 
                     </div> 
                     <div class="header-text">
-                        <h1>Phone Page</h1>
+                        <h1>Cart</h1>
                         <p>Web App by Brenden Petroski</p>
                     </div>
                 </div>

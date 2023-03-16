@@ -22,8 +22,8 @@
                         <p style="padding-right: 75px;"></p>
                         <li><a href="plansPage.php">Voice Plans</a></li>
                         <li><a href="phonesPage.php">Phones</a></li>
-                        <li><a href="#">Data Plans</a></li>
-                        <li><a href="#">Cart</a></li>
+                        <li><a href="dataPlansPage.php">Data Plans</a></li>
+                        <li><a href="cartPage.php">Cart</a></li>
                     </ul>
                 </nav>
                 <div class="logo-container"> 
