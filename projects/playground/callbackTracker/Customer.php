@@ -28,6 +28,22 @@ class Customer {
     public function setCallResult($callResult){$this->callResult = $callResult;}
     public function setQuotedProduct($quotedProduct){$this->quotedProduct = $quotedProduct;}
 
+    public function __construct(){
+        $this->name = $this->setName($_POST["name"]);
+        $this->phoneNumber = $this->setPhoneNumber($_POST["phone-number"]);
+        $this->existingCustomer = $this->setExistingCustomer($_POST["currentCx"]);
+        $this->callResult = $this->setCallResult($_POST["call-result"]);
+        $this->quotedProduct = $this->setQuotedProduct($_POST["quoted-product"]);
+    }
+
+    public function testOutput(){
+        $debugString = "";
+        $debugString .= "Customer Information <br>Name: ".$this->getName()."<br>Phone Number: ".$this->getPhoneNumber().
+        "<br>Current Customer: ".$this->getExistingCustomer()."<br>Call Result:".$this->getCallResult().
+        "<br>Quoted Product".$this->getQuotedProduct();
+        return $debugString;
+    }
+
     public function formatPhoneNumber($phoneNumber){
         $formattedNumber = "";
         $formattedNumber = substr($phoneNumber, -10, -7) . "-" . substr($phoneNumber, -7, -4) . "-" . substr($phoneNumber, -4);
