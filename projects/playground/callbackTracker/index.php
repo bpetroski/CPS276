@@ -1,15 +1,14 @@
 <?php
+    require_once 'Classes/navHeader.php';
+    $navBar = new navHeader();
 
     $output = "<br>";
     if(isset($_POST["submitBtn"])){
-        require_once "Customer.php";
+        require_once "Classes/Customer.php";
         $newCx = new Customer();
         $output .= $newCx->testOutput();
     }
-
 ?>
-
-
 
 <!doctype html>
 <html lang="en">
@@ -34,28 +33,8 @@
 
     </head>
     <body>
-        <header style="background-color: #333; color: #fff;">
-            <div class="container">
-                <nav class="nav-header">
-                    <ul>
-                        <p style="padding-right: 75px;"></p>    
-                        <li><a href="">New Callback</a></li>
-                        <li><a href="callbacksPage.php">Outbound Calls</a></li>
-                        <li><a href=""></a></li>
-                        <li><a href=""></a></li>
-                    </ul>
-                </nav>
-                <div class="logo-container"> 
-                    <div style="padding-right: 15px;">
-                        <a href="https://russet-v8.wccnet.edu/~bjpetroski/projects/playground" target="_self"> <img src="../src/tmo-logo-v4.svg" alt="T-Mobile"></a> 
-                    </div> 
-                    <div class="header-text">
-                        <h1>Callback Tool</h1>
-                        <p>Web App by Brenden Petroski</p>
-                    </div>
-                </div>
-            </div>
-        </header>
+        <?php echo $navBar->nav("Callback Tool"); ?>
+
         <main class="container">
             <form name="phone-numbers" action="index.php" method="post">
                 <div class="form-group">
