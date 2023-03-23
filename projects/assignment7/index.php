@@ -1,7 +1,5 @@
 <?php
-
-    $output = "<br>";
-
+    require_once 'Classes/fileUploadProc.php';
 ?>
 
 <!doctype html>
@@ -15,8 +13,8 @@
     <body>
         <div class="container">
             <h1>File Upload</h1>
-            <a href="#">Show File List</a>
-            <form name="Directories" action="index.php" method="post">
+            <a href="pdfPage.php">Show File List</a>
+            <form name="PDF Files" action="index.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name-input">File Name:</label>
                     <input type="text" class="form-control" name="name-input" id="name-input" value="">
@@ -25,9 +23,9 @@
                 <div class="form-group">
                     <input type="file" name="pdf-file" id="pdf-file">
       	        </div>
-                <br>
+                <?php echo $output ?>
                 <div class="form-group">
-                    <input type="submit" class="btn btn-primary" name="submitBtn" id="submitBtn" value="Upload File">
+                    <input type="submit" class="btn btn-primary" name="upload-pdf" id="upload-pdf" value="Upload File">
                 </div>
             </form>
         </div>
