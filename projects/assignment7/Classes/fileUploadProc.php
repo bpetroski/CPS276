@@ -1,5 +1,7 @@
 <?php
 
+require_once 'listFilesProc.php';
+
 if (isset( $_POST["upload-pdf"])){
     processFile();
 }
@@ -36,7 +38,8 @@ function processFile(){
             $output = "<p>Sorry, there was a problem uploading that PDF.</p>";
     }
     else {
-        // upload file to database with crud	
+        // upload file to database with crud
+        uploadFile();
         $output = displayThanks();
     }
 

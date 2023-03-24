@@ -15,6 +15,8 @@
             <h1>List Files</h1>
             <a href="index.php">Add File</a>
         </div>
-        
+        <div class="container">
+            <?php echo listFiles() ?>
+        </div>
     </body>
 </html> 

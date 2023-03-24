@@ -13,9 +13,9 @@ class DatabaseConn {
       //$dbUsr = 'root';
       //$dbPass = 'password';
       $dbHost = 'localhost';
-      $dbName = 'sshaper';
-      $dbUsr = 'sshaper';
-      $dbPass = 'xxxxx';
+      $dbName = 'bjpetroski';
+      $dbUsr = 'bjpetroski';
+      $dbPass = 'VewyDhvdrgF2';
 
       $this->conn = new PDO('mysql:host=' . $dbHost . ';dbname=' . $dbName, $dbUsr, $dbPass);
 
