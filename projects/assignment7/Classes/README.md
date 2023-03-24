@@ -1,0 +1,1 @@
+listFilesProc.php and fileUploadProc.php aren't classes because I changed my mind but I decided it would be easier to keep them in the classes folder.
