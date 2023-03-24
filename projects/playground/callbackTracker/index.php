@@ -67,7 +67,12 @@
                 </div>
                 <div class="form-group">
                     <label for="quoted-product">What did you offer?</label>
-                    <input type="text" class="form-control" name="quoted-product" id="quoted-product">
+                    <input type="text" class="form-control" name="quoted-product" id="quoted-product"> 
+                    <!-- change this ^^ to a list of stuff to choose from. -->
+                </div>
+                <div class="form-group">
+                    <label for="other-info">Other Info</label>
+                    <textarea class="form-control" name="other-info" id="other-info"></textarea>
                 </div>
                 <br>
                 <div class="form-group">

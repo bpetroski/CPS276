@@ -1,6 +1,8 @@
 <?php
     require_once 'Classes/navHeader.php';
+    require_once 'Classes/Crud.php';
     $navBar = new navHeader();
+    $crud = new Crud();
 
 
 ?>
