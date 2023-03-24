@@ -38,7 +38,6 @@ function processFile(){
             $output = "<p>Sorry, there was a problem uploading that PDF.</p>";
     }
     else {
-        // upload file to database with crud
         uploadFile();
         $output = displayThanks();
     }
