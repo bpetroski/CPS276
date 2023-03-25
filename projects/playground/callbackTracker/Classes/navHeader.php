@@ -9,11 +9,10 @@ class navHeader {
             <div class="container">
                 <nav class="nav-header">
                     <ul>
-                        <p style="padding-right: 75px;"></p>    
-                        <li><a href="index.php">New Callback</a></li>
-                        <li><a href="callbacksPage.php">Outbound Calls</a></li>
-                        <li><a href=""></a></li>
-                        <li><a href=""></a></li>
+                        <li><a style='white-space: nowrap;' href="index.php">New Callback</a></li>
+                        <li><a style='white-space: nowrap;' href="callbacksPage.php">Outbound Calls</a></li>
+                        <li><a style='white-space: nowrap;' href=""></a></li>
+                        <li><a style='white-space: nowrap;' href=""></a></li>
                     </ul>
                 </nav>
                 <div class="logo-container"> 
