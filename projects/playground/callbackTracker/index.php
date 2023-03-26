@@ -6,7 +6,8 @@
     if(isset($_POST["submitBtn"])){
         require_once "Classes/Customer.php";
         $newCx = new Customer();
-        $output .= $newCx->testOutput();
+        $output .= $newCx->sendToDatabase();
+        $output .= $newCx->testOutput(); // rm when database stuff works
     }
 ?>
 

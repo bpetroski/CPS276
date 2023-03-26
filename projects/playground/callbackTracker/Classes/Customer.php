@@ -1,13 +1,7 @@
 <?php
+    require_once 'Crud.php';
 
-// use libphonenumber\NumberParseException;
-// use libphonenumber\PhoneNumber;
-// use libphonenumber\PhoneNumberFormat;
-// use libphonenumber\PhoneNumberUtil;
-
-// $phoneUtil = PhoneNumberUtil::getInstance();
-
-class Customer {
+class Customer extends Crud {
 
     private $name = "Brenden Petroski";
     private $phoneNumber = "248-787-1553";
@@ -54,5 +48,9 @@ class Customer {
         return $formattedNumber;
     }
 
+    public function sendToDatabase(){
+        $crud = new Crud();
+        return $crud->addCustomer();
+    }
 
 }
