@@ -37,10 +37,10 @@
                 <div class="form-group"> 
                     <p>Is this person currently a customer?</p>
                     <label for="existing-customer">Yes</label>
-                    <input type="radio" name="currentCx" id="existing-customer" value=true>
+                    <input type="radio" name="currentCx" id="existing-customer" value=1>
 
                     <label for="new-customer">No</label>
-                    <input type="radio" name="currentCx" id="new-customer" value=false checked>
+                    <input type="radio" name="currentCx" id="new-customer" value=0 checked>
 
                 </div>
                 <div class="form-group">
