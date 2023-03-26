@@ -5,7 +5,7 @@ CREATE TABLE callbackCustomers
   CxPhone char(20)  NULL ,
   currentCustomer Boolean,
   CxInterested char(10),
-  offeredProduct char(25),
+  offeredProduct char(50),
   otherInfo char(255),
   PRIMARY KEY (CustomerID)
 ) ENGINE=InnoDB;

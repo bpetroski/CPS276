@@ -9,10 +9,8 @@ class navHeader {
             <div class="container">
                 <nav class="nav-header">
                     <ul>
-                        <li><a style='white-space: nowrap;' href="index.php">New Callback</a></li>
-                        <li><a style='white-space: nowrap;' href="callbacksPage.php">Outbound Calls</a></li>
-                        <li><a style='white-space: nowrap;' href=""></a></li>
-                        <li><a style='white-space: nowrap;' href=""></a></li>
+                        <li><a href="index.php">New Callback</a></li>
+                        <li><a href="callbacksPage.php">Outbound Calls</a></li>
                     </ul>
                 </nav>
                 <div class="logo-container"> 
@@ -21,7 +19,7 @@ class navHeader {
                     </div> 
                     <div class="header-text">
                         <h1>$header</h1>
-                        <p>Web App by Brenden Petroski</p>
+                        <a href='https://github.com/bpetroski'>Web App by Brenden Petroski</a>
                     </div>
                 </div>
             </div>
