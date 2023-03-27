@@ -21,7 +21,7 @@
     <body>
         <?php echo $navBar->nav("Outbound Calls"); ?>
         <main class="container">
-
+            <?php echo $crud->showCustomers(true) ?>
         </main>
     </body>
 </html> 

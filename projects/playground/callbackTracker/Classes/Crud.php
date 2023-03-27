@@ -4,7 +4,20 @@ require 'Pdo_methods.php';
 class Crud extends PdoMethods{
 
     public function showCustomers($interested){
-        
+        $pdo = new PdoMethods();
+        $sql = 'SELECT * FROM callbackCustomers';
+
+        $records = $pdo->selectNotBinded($sql);
+
+        if($records == 'error'){
+            return 'There has been an error processing your request.';
+        }else{
+            if(count($records) != 0){
+                return $this->createList($records);    
+            }else{
+                return 'no names found.';
+            }
+        }
     }
 
     public function addCustomer(){
@@ -17,7 +30,7 @@ class Crud extends PdoMethods{
         $bindings = [
             [':name',$_POST['name'],'str'],
             [':phone',$_POST['phone-number'],'str'],
-            [':currentCustomer',$_POST['currentCx'],'bool'],
+            [':currentCustomer',$_POST['currentCx'],'int'],
             [':interested',$_POST['call-result'],'str'],
             [':offeredProduct',$_POST['quoted-product'],'str'],
             [':otherInfo',$_POST['other-info'],'str']
@@ -30,5 +43,14 @@ class Crud extends PdoMethods{
         }else{
             return 'Customer added. <br>';
         }
+    }
+
+    public function createList($records){
+        $list = '<ul>';
+        foreach ($records as $row){
+            $list .= "<li> {$row['CxName']} {$row['CxPhone']} {$row['currentCustomer']} {$row['CxInterested']} {$row['offeredProduct']} {$row['otherInfo']} </li>";
+        }
+        $list .= '</ul>';
+        return $list;        
     }
 }
