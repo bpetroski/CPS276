@@ -68,7 +68,7 @@ name.addName = function(){
 
 name.displayNames = function(){
 
-	Util.getEl('#msg')[0].innerHTML = "";
+	Util.getEl('#msg')[0].innerHTML = ""; // sets error message to blank
 	Util.sendRequest('php/displayNames.php', function(res){
 		let json;
 		console.log(res.responseText);
