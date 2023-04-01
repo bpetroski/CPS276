@@ -12,20 +12,24 @@
     if(!$json){
         $response = (object) [
             'masterstatus' => 'error',
-            'msg' => 'Could not read file',
+            'msg' => 'no names found.',
         ];
-        echo json_encode($response); /* BECAUSE WE DON'T WANT TO GO ANY FURTHER WITH THIS OPERATION TERMINATE IT HERE */
-        exit;
+        echo json_encode($response); 
+        exit; /* BECAUSE WE DON'T WANT TO GO ANY FURTHER WITH THIS OPERATION TERMINATE IT HERE */
     }
 
     /* IF ALL IS OKAY THEN CREATE AN OBJECT FROM THE JSON FILE USING JSON_DECODE*/
     // $json = json_decode($json);
+    // echo "<pre>";
+    // print_r($json);
 
     $i = 0;
     $list = '<ul>';
 
     while($i < count($json)){
-        $list .= '<li>' . $json[$i]->name;
+        //$list .= '<li>' . $json[$i]->name;
+        $list .= '<li>' . $json[$i]['name'];
+
         $i++;
     }
 
@@ -34,7 +38,7 @@
     /* CREATE ANOTHER PHP OBJECT TO STORE THE MASTERSTATUS AND THE LIST, THEN ENCODE THE OBJECT (PUT IT INTO A STRING) AND SEND IT TO THE BROWSER */
     $response = (object) [
         'masterstatus' => 'success',
-        'list' => $list,
+        'names' => $list,
     ];
     echo json_encode($response);
 ?>
