@@ -29,11 +29,11 @@
             <form name="phone-numbers" action="index.php" method="post">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" name="name" id="name">
+                    <input type="text" class="form-control" name="name" id="name" required>
                 </div>
                 <div class="form-group">
                     <label for="phone-number">Phone Number</label>
-                    <input type="integer" class="form-control" name="phone-number" id="phone-number">
+                    <input type="integer" class="form-control" name="phone-number" id="phone-number" required>
                 </div>
                 <div class="form-group"> 
                     <p>Is this person currently a customer?</p>
@@ -41,13 +41,13 @@
                     <input type="radio" name="currentCx" id="existing-customer" value=1>
 
                     <label for="new-customer">No</label>
-                    <input type="radio" name="currentCx" id="new-customer" value=0 checked>
+                    <input type="radio" name="currentCx" id="new-customer" value=0>
 
                 </div>
                 <div class="form-group">
                 <p>Was the customer interested in our services?</p>
                 <label for="interested">Yes</label>
-                <input type="radio" name="call-result" id="interested" value="interested" checked>
+                <input type="radio" name="call-result" id="interested" value="interested">
 
                 <label for="un-interested">No</label>
                 <input type="radio" name="call-result" id="un-interested" value="un-interested">

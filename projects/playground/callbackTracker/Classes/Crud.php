@@ -13,7 +13,8 @@ class Crud extends PdoMethods{
             return 'There has been an error processing your request.';
         }else{
             if(count($records) != 0){
-                return $this->createList($records);    
+                // return $this->createList($records);   
+                return $this->createBlockList($records); 
             }else{
                 return 'no names found.';
             }
@@ -52,5 +53,13 @@ class Crud extends PdoMethods{
         }
         $list .= '</ul>';
         return $list;        
+    }
+    public function createBlockList($records){
+        $list = '<div>';
+        foreach ($records as $row){
+            $list .= "<p> {$row['CxName']} {$row['CxPhone']} {$row['currentCustomer']} {$row['CxInterested']} {$row['offeredProduct']} {$row['otherInfo']} </p>";
+        }
+        $list .= '</div>';
+        return $list;
     }
 }
