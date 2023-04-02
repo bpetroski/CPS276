@@ -18,27 +18,19 @@
         exit; /* BECAUSE WE DON'T WANT TO GO ANY FURTHER WITH THIS OPERATION TERMINATE IT HERE */
     }
 
-    /* IF ALL IS OKAY THEN CREATE AN OBJECT FROM THE JSON FILE USING JSON_DECODE*/
-    // $json = json_decode($json);
-    // echo "<pre>";
-    // print_r($json);
-
     $i = 0;
-    $list = '<ul>';
+    $names = '<div>';
 
     while($i < count($json)){
-        //$list .= '<li>' . $json[$i]->name;
-        $list .= '<li>' . $json[$i]['name'];
-
+        $names .= '<p>' . $json[$i]['name']."</p>";
         $i++;
     }
-
-    $list .= '</ul>';
+    $names .= '</div>';
 
     /* CREATE ANOTHER PHP OBJECT TO STORE THE MASTERSTATUS AND THE LIST, THEN ENCODE THE OBJECT (PUT IT INTO A STRING) AND SEND IT TO THE BROWSER */
     $response = (object) [
         'masterstatus' => 'success',
-        'names' => $list,
+        'names' => $names,
     ];
     echo json_encode($response);
 ?>
