@@ -19,37 +19,12 @@
         <main class="container">
             <form name="login" action="index.php" method="post">
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" name="name" id="name">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" id="username" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone-number">Phone Number</label>
-                    <input type="integer" class="form-control" name="phone-number" id="phone-number">
-                </div>
-                <div class="form-group"> 
-                    <p>Is this person currently a customer?</p>
-                    <label for="existing-customer">Yes</label>
-                    <input type="radio" name="currentCx" id="existing-customer" value=1>
-
-                    <label for="new-customer">No</label>
-                    <input type="radio" name="currentCx" id="new-customer" value=0 checked>
-
-                </div>
-                <div class="form-group">
-                <p>Was the customer interested in our services?</p>
-                <label for="interested">Yes</label>
-                <input type="radio" name="call-result" id="interested" value="interested" checked>
-
-                <label for="un-interested">No</label>
-                <input type="radio" name="call-result" id="un-interested" value="un-interested">
-
-                <label for="voicemail">Voicemail</label>
-                <input type="radio" name="call-result" id="voicemail" value="voicemail">
-                </div>
-                <div class="form-group">
-                    <label for="quoted-product">What did you offer?</label>
-                    <input type="text" class="form-control" name="quoted-product" id="quoted-product"> 
-                    <!-- change this ^^ to a list of stuff to choose from. -->
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" required>
                 </div>
                 <div class="form-group">
                     <br>
