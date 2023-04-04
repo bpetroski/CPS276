@@ -9,7 +9,7 @@ class navHeader {
             <div class="container">
                 <nav class="nav-header">
                     <ul>
-                        <li><a href="index.php">New Callback</a></li>
+                        <li><a href="newCallback.php">New Callback</a></li>
                         <li><a href="callbacksPage.php">Outbound Calls</a></li>
                     </ul>
                 </nav>
@@ -19,11 +19,14 @@ class navHeader {
                     </div> 
                     <div class="header-text">
                         <h1>$header</h1>
-                        <a href='https://github.com/bpetroski'>Web App by Brenden Petroski</a>
+                        <div class="nav-header" style="padding: 1px;">
+                            <a href='https://github.com/bpetroski'>Web App by Brenden Petroski</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </header>
+        <br>
         NAV;
         return $nav;
         

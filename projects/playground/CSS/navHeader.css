@@ -31,6 +31,26 @@
 	border-bottom: 2px solid #fff;
 }
 
+/* .git-link{
+  background-color: #333;
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+}
+
+.git-link a {
+  color: #fff;
+	text-decoration: none;
+	padding: 10px;
+	border-bottom: 2px solid transparent;
+	transition: border-bottom 0.2s ease-in-out;
+}
+
+.git-link a:hover{
+  border-bottom: 2px solid #fff;
+} */
+
 .logo-container {
     display: flex;
     align-items: center;
