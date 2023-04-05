@@ -1,24 +1,22 @@
 <?php
     require_once 'Classes/navHeader.php';
     $navBar = new navHeader();
-    echo $navBar->head("Callback Log In");
-    $output = "";
+    echo $navBar->security();
+    echo $navBar->head("Add Admin");
+    $output="";
 
-    if(isset($_POST['login'])){
+    if(isset($_POST['create-admin'])){
         require_once 'Classes/Admin.php';
         $admin = new Admin();
-        $output = $admin->login($_POST);
-        echo $output;
-        if($output === 'success'){
-            header('Location: newCallback.php');
-        }
+        $output = $admin->addAdmin($_POST);
     }
 ?>
     <body>
-        <?php echo $navBar->nav("Callback Log In"); ?>
+        <?php echo $navBar->nav("Add Admin")?>;
         <main class="container">
+            <p>Enter a username and password to create a new administrator.</p>
             <p><?php echo $output ?></p>
-            <form name="login" action="index.php" method="post">
+            <form name="add_admin" action="addAdmin.php" method="post">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" class="form-control" name="username" id="username" required>
@@ -29,9 +27,9 @@
                 </div>
                 <div class="form-group">
                     <br>
-                    <input type="submit" class="btn btn-primary" name="login" id="login" value="Log In">
+                    <input type="submit" class="btn btn-primary" name="create-admin" id="create-admin" value="Create Admin">
                 </div> 
             </form>
         </main>
     </body>
-</html> 
+</hmtl>

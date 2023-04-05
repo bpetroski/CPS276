@@ -11,6 +11,7 @@ class navHeader {
                     <ul>
                         <li><a href="newCallback.php">New Callback</a></li>
                         <li><a href="callbacksPage.php">Outbound Calls</a></li>
+                        <li><a href="addAdmin.php">Add Admin</a></li>
                         <li><a href="logout.php">Logout</a></li>
                     </ul>
                 </nav>
@@ -30,6 +31,22 @@ class navHeader {
         <br>
         NAV;
         return $nav;
+    }
+
+    public function head($title="title"){
+        $head = <<<HTML
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>$title</title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+            <link rel="stylesheet" type="text/css" href="../CSS/navHeader.css">
+            <link rel="stylesheet" type="text/css" href="../CSS/formGroupFormatting.css">
+        </head>
+        HTML;
+        return $head;
     }
 
     public function security(){
