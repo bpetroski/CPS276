@@ -9,6 +9,8 @@
         $output .= $newCx->sendToDatabase();
         $output .= $newCx->testOutput(); // rm when database stuff works
     }
+
+    $navBar->security();
 ?>
 
 <!doctype html>

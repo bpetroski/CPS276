@@ -11,6 +11,7 @@ class navHeader {
                     <ul>
                         <li><a href="newCallback.php">New Callback</a></li>
                         <li><a href="callbacksPage.php">Outbound Calls</a></li>
+                        <li><a href="logout.php">Logout</a></li>
                     </ul>
                 </nav>
                 <div class="logo-container"> 
@@ -29,6 +30,11 @@ class navHeader {
         <br>
         NAV;
         return $nav;
-        
     }
+
+    public function security(){
+        session_start();
+        if($_SESSION['access'] !== "accessGranted"){header('location: index.php');}
+    }
+
 }

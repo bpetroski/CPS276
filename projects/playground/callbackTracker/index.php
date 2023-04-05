@@ -4,7 +4,9 @@
     $output = "";
 
     if(isset($_POST['login'])){
-        
+        session_start();
+        $_SESSION['access'] = "accessGranted";
+        header('Location: newCallback.php');
     }
 ?>
 
@@ -33,7 +35,7 @@
                 </div>
                 <div class="form-group">
                     <br>
-                    <input type="submit" class="btn btn-primary" name="submitBtn" id="submitBtn" value="Submit">
+                    <input type="submit" class="btn btn-primary" name="login" id="login" value="Log In">
                 </div> 
             </form>
         </main>

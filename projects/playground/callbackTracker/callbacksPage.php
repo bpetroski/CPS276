@@ -4,7 +4,7 @@
     $navBar = new navHeader();
     $crud = new Crud();
 
-
+    $navBar->security();
 ?>
 
 <!doctype html>
