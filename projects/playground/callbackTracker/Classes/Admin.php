@@ -43,14 +43,10 @@ class Admin extends PdoMethods {
 		if($records == 'error'){return 'There was an error processing your request';}
 		
 		/** CHECK FOR A DUPLICATE USERNAME IF FOUND THEN RETURN DUPLICATE OTHERWISE ADD USERNAME AND PASSWORD TO DATABASE */
-		// else{
         if(count($records) != 0){
             return "There is already someone with that username";
         }
         else {
-            /** ENCRYPT THE PASSWORD USING PASSWORD_HASH */
-            // $password = password_hash($post['password'], PASSWORD_DEFAULT);
-
             $sql = "INSERT INTO tmo_admin (username, password) VALUES (:username, :password)";
             $bindings = array(
                 array(':username',$post['username'],'str'),
@@ -64,34 +60,33 @@ class Admin extends PdoMethods {
                 return 'There was a problem adding this administrator';
             }
         }
-		// }
 	}
 
-	public function displayUsernamePassword(){
-		$pdo = new PdoMethods();
-		$sql = "SELECT username, password FROM admin";
-		$records = $pdo->selectNotBinded($sql);
-		$result = '';
+	// public function displayUsernamePassword(){
+	// 	$pdo = new PdoMethods();
+	// 	$sql = "SELECT username, password FROM admin";
+	// 	$records = $pdo->selectNotBinded($sql);
+	// 	$result = '';
 
-		/* IF THERE WAS AN ERROR DISPLAY MESSAGE*/
-		if($records == 'error'){
-		    return 'There has been and error processing this request';
-		}
+	// 	/* IF THERE WAS AN ERROR DISPLAY MESSAGE*/
+	// 	if($records == 'error'){
+	// 	    return 'There has been and error processing this request';
+	// 	}
 
-		/** IF USERNAMES AND PASSWORDS ARE FOUND DISPLAY THEM OTHERWISE DISPLAY NO RECORDS FOUND MESSAGE */
-		else{
-		    if(count($records) != 0){
-		        $result = '<ul>';
-		        foreach($records as $row){
-		            $result .= "<li>" .$row['username'] . " -- " . $row['password'] . "</li>";
-		        }
-		        $result .= "</ul>";
+	// 	/** IF USERNAMES AND PASSWORDS ARE FOUND DISPLAY THEM OTHERWISE DISPLAY NO RECORDS FOUND MESSAGE */
+	// 	else{
+	// 	    if(count($records) != 0){
+	// 	        $result = '<ul>';
+	// 	        foreach($records as $row){
+	// 	            $result .= "<li>" .$row['username'] . " -- " . $row['password'] . "</li>";
+	// 	        }
+	// 	        $result .= "</ul>";
 
-		        return $result;
-		    }
-		    else {
-		        return 'No records found';
-		    }
-		}
-	}
+	// 	        return $result;
+	// 	    }
+	// 	    else {
+	// 	        return 'No records found';
+	// 	    }
+	// 	}
+	// }
 }
