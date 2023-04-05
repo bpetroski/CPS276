@@ -1,6 +1,11 @@
 <?php
     require_once 'Classes/navHeader.php';
     $navBar = new navHeader();
+    $output = "";
+
+    if(isset($_POST['login'])){
+        
+    }
 ?>
 
 <!doctype html>
