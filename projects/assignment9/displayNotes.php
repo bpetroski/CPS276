@@ -1,5 +1,9 @@
 <?php
-    require_once 'Classes/Note.php';
+    $output = "";
+    if(isset($_POST['display-notes'])){
+        require_once 'Classes/Note.php';
+        $output = Note::displayNotesDB();
+    }
 ?>
 
 <!doctype html>
@@ -26,9 +30,12 @@
                     <input type="date" class="form-control" id="endDate" name="endDate" required>
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="btn btn-primary" name="add-note" id="add-note" value="Add Note">
+                    <input type="submit" class="btn btn-primary" name="display-notes" id="display-notes" value="Display Notes">
                 </div>
             </form>
+            <div>
+                <p><?php echo $output ?></p>
+            </div>
         </div>    
     </body>
 </html>

@@ -3,7 +3,7 @@
     if(isset($_POST['add-note'])){
         require_once 'Classes/Note.php';
         $note = new Note();
-        $output = $note->testOutput();
+        $output = $note->addNoteDB();
     }
     
 ?>
@@ -25,11 +25,11 @@
                 <p name="add-msg" id="add-msg"><?php echo $output ?></p>
                 <div class="form-group">
                     <label for="dateTime">Date and Time</label>
-                    <input type="datetime-local" class="form-control" id="dataTime" name="dateTime" required>
+                    <input type="datetime-local" class="form-control" id="dataTime" name="dateTime">
                 </div>
                 <div class="form-group">
                     <label for="note-input">Note</label>
-                    <textarea style="height: 250px;" class="form-control" name="note-input" id="note-input" required></textarea>
+                    <textarea style="height: 250px;" class="form-control" name="note-input" id="note-input"></textarea>
       	        </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" name="add-note" id="add-note" value="Add Note">
