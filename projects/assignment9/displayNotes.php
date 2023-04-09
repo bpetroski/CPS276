@@ -1,5 +1,5 @@
 <?php
-
+    require_once 'Classes/Note.php';
 ?>
 
 <!doctype html>
@@ -16,14 +16,14 @@
             <h1>Display Notes</h1>
             <a href="index.php">Add Note</a>
             <form name="date-range" action="displayNotes.php" method="post">
-                <br>
+                <p name="display-msg" id="display-msg"></p>
                 <div class="form-group">
                     <label for="begDate">Beginning Date</label>
-                    <input type="date" class="form-control" id="begDate" name="begDate">
+                    <input type="date" class="form-control" id="begDate" name="begDate" required>
                 </div>
                 <div class="form-group">
                     <label for="endDate">Ending Date</label>    
-                    <input type="date" class="form-control" id="endDate" name="endDate">
+                    <input type="date" class="form-control" id="endDate" name="endDate" required>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" name="add-note" id="add-note" value="Add Note">
