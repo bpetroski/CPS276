@@ -54,6 +54,14 @@ $elementsArr = [
         "value"=>"999.999.9999",
         "regex"=>"phone"
   ],
+
+  "city"=>[
+        "errorMessage"=>"<span style='color: red; margin-left: 15px;'>Please enter in a valid, non-blank city name</span>",
+        "errorOutput"=>"",
+        "type"=>"text",
+        "value"=>"Brighton",
+        "regex"=>"name"
+  ],
    
   "state"=>[
     "type"=>"select",
@@ -142,7 +150,10 @@ $form = <<<HTML
       <label for="phone">Phone (format 999.999.9999) {$elementsArr['phone']['errorOutput']}</label>
       <input type="text" class="form-control" id="phone" name="phone" value="{$elementsArr['phone']['value']}" >
     </div>
-            
+    <div class="form-group">
+      <label for="city">City {$elementsArr['city']['errorOutput']}</label>
+      <input type="text" class="form-control" id="city" name="city" value="{$elementsArr['city']['value']}">
+    </div>   
     <div class="form-group">
       <label for="state">State</label>
       <select class="form-control" id="state" name="state">
