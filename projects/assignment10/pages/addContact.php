@@ -55,6 +55,14 @@ $elementsArr = [
         "regex"=>"phone"
   ],
 
+  "address"=>[
+        "errorMessage"=>"<span style='color: red; margin-left: 15px;'>Address must be valid</span>",
+        "errorOutput"=>"",
+        "type"=>"text",
+        "value"=>"123 Main Street",
+        "regex"=>"name" // still need to add address regex
+  ],
+
   "city"=>[
         "errorMessage"=>"<span style='color: red; margin-left: 15px;'>Please enter in a valid, non-blank city name</span>",
         "errorOutput"=>"",
@@ -147,8 +155,8 @@ $form = <<<HTML
       <input type="text" class="form-control" id="name" name="name" value="{$elementsArr['name']['value']}" >
     </div>
     <div class="form-group">
-      <label for="phone">Phone (format 999.999.9999) {$elementsArr['phone']['errorOutput']}</label>
-      <input type="text" class="form-control" id="phone" name="phone" value="{$elementsArr['phone']['value']}" >
+      <label for="address">Address {$elementsArr['address']['errorOutput']}</label>
+      <input type="text" class="form-control" id="address" name="address" value="{$elementsArr['address']['value']}">
     </div>
     <div class="form-group">
       <label for="city">City {$elementsArr['city']['errorOutput']}</label>
@@ -159,6 +167,10 @@ $form = <<<HTML
       <select class="form-control" id="state" name="state">
         $options
       </select>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone (format 999.999.9999) {$elementsArr['phone']['errorOutput']}</label>
+      <input type="text" class="form-control" id="phone" name="phone" value="{$elementsArr['phone']['value']}" >
     </div>
     <p>Please check all financial options (you must check at least one):{$elementsArr['financial']['errorOutput']}</p>
     <div class="form-check form-check-inline">
