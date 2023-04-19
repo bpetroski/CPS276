@@ -41,34 +41,40 @@ $elementsArr = [
     "type"=>"masterStatus"
   ],
 	"name"=>[
-	    "errorMessage"=>"<span style='color: red; margin-left: 15px;'>Name cannot be blank and must be a standard name</span>",
-        "errorOutput"=>"",
-        "type"=>"text",
-        "value"=>"Brenden",
-        "regex"=>"name"
+    "errorMessage"=>"<span class='errorMsg'>Name cannot be blank and must be a standard name</span>",
+      "errorOutput"=>"",
+      "type"=>"text",
+      "value"=>"Brenden",
+      "regex"=>"name"
 	],
 	"phone"=>[
-        "errorMessage"=>"<span style='color: red; margin-left: 15px;'>Phone cannot be blank and must be a valid phone number</span>",
-        "errorOutput"=>"",
-        "type"=>"text",
-        "value"=>"999.999.9999",
-        "regex"=>"phone"
+    "errorMessage"=>"<span class='errorMsg'>Phone cannot be blank and must be a valid phone number</span>",
+    "errorOutput"=>"",
+    "type"=>"text",
+    "value"=>"999.999.9999",
+    "regex"=>"phone"
   ],
-
+/* 
+  "CONTACT"=>[
+    "errorMessage"=>"",
+    "type"=>"text",
+    "regex"=>"email"
+  ],
+ */
   "address"=>[
-        "errorMessage"=>"<span style='color: red; margin-left: 15px;'>Address must be valid</span>",
-        "errorOutput"=>"",
-        "type"=>"text",
-        "value"=>"123 Main Street",
-        "regex"=>"name" // still need to add address regex
+    "errorMessage"=>"<span class='errorMsg'>Address must be valid</span>",
+    "errorOutput"=>"",
+    "type"=>"text",
+    "value"=>"123 Main Street",
+    "regex"=>"address"
   ],
 
   "city"=>[
-        "errorMessage"=>"<span style='color: red; margin-left: 15px;'>Please enter in a valid, non-blank city name</span>",
-        "errorOutput"=>"",
-        "type"=>"text",
-        "value"=>"Brighton",
-        "regex"=>"name"
+    "errorMessage"=>"<span class='errorMsg'>Please enter in a valid, non-blank city name</span>",
+    "errorOutput"=>"",
+    "type"=>"text",
+    "value"=>"Brighton",
+    "regex"=>"name"
   ],
    
   "state"=>[
@@ -77,69 +83,80 @@ $elementsArr = [
 		"selected"=>"mi",
 		"regex"=>"name"
 	],
-  "financial"=>[
-    "errorMessage"=>"<span style='color: red; margin-left: 15px;'>You must select at least one financial option</span>",
+  
+  "email"=>[
+    "errorMessage"=>"<span class='errorMsg'>Please enter in a valid, non-blank email</span>",
+    "errorOutput"=>"",
+    "type"=>"text",
+    "value"=>"bjpetroski@wccnet.edu",
+    "regex"=>"email" 
+  ],
+
+  "contactMethod"=>[
+    "errorMessage"=>"<span class='errorMsg'>There was an error</span>",
     "errorOutput"=>"",
     "type"=>"checkbox",
-    "action"=>"required",
-    "status"=>["cash"=>"", "check"=>"", "credit"=>""]
+    "action"=>"none",
+    "status"=>["Newsletter"=>"", "Email"=>"", "SMS"=>""]
   ],
-  "eyeColor"=>[
-    "action"=>"notRequired",
+  "ageGroup"=>[
+    "errorMessage"=>"<span class='errorMsg'>You must select at least one age group option</span>",
+    "errorOutput"=>"",
+    "action"=>"required",
     "type"=>"radio",
-    "value"=>["blue"=>"", "brown"=>"", "hazel"=>"", "green"=>"", "other"=>""]
+    "value"=>["10-18"=>"", "19-30"=>"", "30-50"=>"", "51+"=>""]
   ]
 ];
 
 
-/*THIS FUNCTION CAN BE CALLED TO ADD DATA TO THE DATABASE */
-function addData($post){
-  global $elementsArr;  
-  /* IF EVERYTHING WORKS ADD THE DATA HERE TO THE DATABASE HERE USING THE $_POST SUPER GLOBAL ARRAY */
-      //print_r($_POST);
-      require_once('classes/Pdo_methods.php');
+// /*THIS FUNCTION CAN BE CALLED TO ADD DATA TO THE DATABASE */
+// function addData($post){
+//   global $elementsArr;  
+//   /* IF EVERYTHING WORKS ADD THE DATA HERE TO THE DATABASE HERE USING THE $_POST SUPER GLOBAL ARRAY */
+//       //print_r($_POST);
+//       require_once('classes/Pdo_methods.php');
 
-      $pdo = new PdoMethods();
+//       $pdo = new PdoMethods();
 
-      $sql = "INSERT INTO contactMod (name, phone, state, financial, eye) VALUES (:name, :phone, :state, :financial, :eye)";
+//       $sql = "INSERT INTO contactMod (name, phone, state, financial, eye) VALUES (:name, :phone, :state, :financial, :eye)";
 
-      /* THIS TAKE THE ARRAY OF CHECK BOXES AND PUT THE VALUES INTO A STRING SEPERATED BY COMMAS  */
-      if(isset($_POST['financial'])){
-        $financial = "";
-        foreach($post['financial'] as $v){
-          $financial .= $v.",";
-        }
-        /* REMOVE THE LAST COMMA FROM THE CONTACTS */
-        $financial = substr($financial, 0, -1);
-      }
+//       /* THIS TAKE THE ARRAY OF CHECK BOXES AND PUT THE VALUES INTO A STRING SEPERATED BY COMMAS  */
+//       if(isset($_POST['financial'])){
+//         $financial = "";
+//         foreach($post['financial'] as $v){
+//           $financial .= $v.",";
+//         }
+//         /* REMOVE THE LAST COMMA FROM THE CONTACTS */
+//         $financial = substr($financial, 0, -1);
+//       }
 
-      if(isset($_POST['eyeColor'])){
-        $eyeColor = $_POST['eyeColor'];
-      }
-      else {
-        $eyeColor = "";
-      }
+//       if(isset($_POST['eyeColor'])){
+//         $eyeColor = $_POST['eyeColor'];
+//       }
+//       else {
+//         $eyeColor = "";
+//       }
 
 
-      $bindings = [
-        [':name',$post['name'],'str'],
-        [':phone',$post['phone'],'str'],
-        [':state',$post['state'],'str'],
-        [':financial',$financial,'str'],
-        [':eye',$eyeColor,'str']
-      ];
+//       $bindings = [
+//         [':name',$post['name'],'str'],
+//         [':phone',$post['phone'],'str'],
+//         [':state',$post['state'],'str'],
+//         [':financial',$financial,'str'],
+//         [':eye',$eyeColor,'str']
+//       ];
 
-      $result = $pdo->otherBinded($sql, $bindings);
+//       $result = $pdo->otherBinded($sql, $bindings);
 
-      if($result == "error"){
-        return getForm("<p>There was a problem processing your form</p>", $elementsArr);
-      }
-      else {
-        return getForm("<p>Contact Information Added</p>", $elementsArr);
-      }
+//       if($result == "error"){
+//         return getForm("<p>There was a problem processing your form</p>", $elementsArr);
+//       }
+//       else {
+//         return getForm("<p>Contact Information Added</p>", $elementsArr);
+//       }
       
-}
-   
+// }
+  
 
 /*THIS IS THEGET FROM FUCTION WHICH WILL BUILD THE FORM BASED UPON UPON THE (UNMODIFIED OF MODIFIED) ELEMENTS ARRAY. */
 function getForm($acknowledgement, $elementsArr){
@@ -150,65 +167,72 @@ $options = $stickyForm->createOptions($elementsArr['state']);
 /* THIS IS A HEREDOC STRING WHICH CREATES THE FORM AND ADD THE APPROPRIATE VALUES AND ERROR MESSAGES */
 $form = <<<HTML
     <form method="post" action="index.php?page=addContact">
-    <div class="form-group">
+    <div class="form-group"> <!-- name input -->
       <label for="name">Name (letters only){$elementsArr['name']['errorOutput']}</label>
       <input type="text" class="form-control" id="name" name="name" value="{$elementsArr['name']['value']}" >
     </div>
-    <div class="form-group">
-      <label for="address">Address {$elementsArr['address']['errorOutput']}</label>
+    <div class="form-group"> <!-- street address input -->
+      <label for="address">Address (just number and street) {$elementsArr['address']['errorOutput']}</label>
       <input type="text" class="form-control" id="address" name="address" value="{$elementsArr['address']['value']}">
     </div>
-    <div class="form-group">
+    <div class="form-group"> <!-- city input -->
       <label for="city">City {$elementsArr['city']['errorOutput']}</label>
       <input type="text" class="form-control" id="city" name="city" value="{$elementsArr['city']['value']}">
     </div>   
-    <div class="form-group">
+    <div class="form-group"> <!-- state selector -->
       <label for="state">State</label>
       <select class="form-control" id="state" name="state">
         $options
       </select>
     </div>
-    <div class="form-group">
+    <div class="form-group"> <!-- phone input -->
       <label for="phone">Phone (format 999.999.9999) {$elementsArr['phone']['errorOutput']}</label>
       <input type="text" class="form-control" id="phone" name="phone" value="{$elementsArr['phone']['value']}" >
     </div>
-    <p>Please check all financial options (you must check at least one):{$elementsArr['financial']['errorOutput']}</p>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" name="financial[]" id="financial1" value="cash" {$elementsArr['financial']['status']['cash']}>
-      <label class="form-check-label" for="financial1">Cash</label>
+    <div class="form-group"> <!-- email input -->
+      <label for="email-address">Email {$elementsArr['email']['errorOutput']}</label>
+      <input type="text" class="form-control" id="email-address" name="email-address" value="{$elementsArr['email']['value']}" >
     </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" name="financial[]" id="financial2" value="check" {$elementsArr['financial']['status']['check']}>
-      <label class="form-check-label" for="financial2">Check</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" name="financial[]" id="financia3" value="credit" {$elementsArr['financial']['status']['credit']}>
-      <label class="form-check-label" for="financial3">Credit</label>
-    </div>
-        
-    <p>Please select an eye color (optional):</p>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="eyeColor" id="eyeColor1" value="blue"  {$elementsArr['eyeColor']['value']['blue']}>
-      <label class="form-check-label" for="eyeColor1">Blue</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="eyeColor" id="eyeColor2" value="brown"  {$elementsArr['eyeColor']['value']['brown']}>
-      <label class="form-check-label" for="eyeColor2">Brown</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="eyeColor" id="eyeColor3" value="hazel"  {$elementsArr['eyeColor']['value']['hazel']}>
-      <label class="form-check-label" for="eyeColor3">Hazel</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="eyeColor" id="eyeColor4" value="green"  {$elementsArr['eyeColor']['value']['green']}>
-      <label class="form-check-label" for="eyeColor4">Green</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="eyeColor" id="eyeColor5" value="other"  {$elementsArr['eyeColor']['value']['other']}>
-      <label class="form-check-label" for="eyeColor5">Other</label>
-    </div>
-    <div>
-    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+    <!-- <div class="form-group">
+      <label for="DOB">Date of Birth</label>
+      <input type="date" class="form-control" id="dataTime" name="dateTime">
+    </div> -->
+    <p>Please check all contact options (optional):{$elementsArr['contactMethod']['errorOutput']}</p>
+    <span> <!--contact method checkboxes-->
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="contactMethod[]" id="contactMethod1" value="Newsletter" {$elementsArr['contactMethod']['status']['Newsletter']}>
+        <label class="form-check-label" for="contactMethod1">Newsletter</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="contactMethod[]" id="contactMethod2" value="Email" {$elementsArr['contactMethod']['status']['Email']}>
+        <label class="form-check-label" for="contactMethod2">Email Updates</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="contactMethod[]" id="contactMethod3" value="SMS" {$elementsArr['contactMethod']['status']['SMS']}>
+        <label class="form-check-label" for="contactMethod3">Text Updates</label>
+      </div>
+    </span>
+    <p class="padtop">Please select an age range (you must select one): {$elementsArr['ageGroup']['errorOutput']}</p>
+    <span> <!--age range radio-->
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="ageGroup" id="ageGroup1" value="10-18"  {$elementsArr['ageGroup']['value']['10-18']}>
+        <label class="form-check-label" for="ageGroup1">10-18</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="ageGroup" id="ageGroup2" value="19-30"  {$elementsArr['ageGroup']['value']['19-30']}>
+        <label class="form-check-label" for="ageGroup2">19-30</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="ageGroup" id="ageGroup3" value="30-50"  {$elementsArr['ageGroup']['value']['30-50']}>
+        <label class="form-check-label" for="ageGroup3">30-50</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="ageGroup" id="ageGroup4" value="51+"  {$elementsArr['ageGroup']['value']['51+']}>
+        <label class="form-check-label" for="ageGroup4">51+</label>
+      </div>
+    </span>
+    <div class="padtop">
+      <button type="submit" name="submit" class="btn btn-primary">Submit</button>
     </div>
   </form>
 HTML;

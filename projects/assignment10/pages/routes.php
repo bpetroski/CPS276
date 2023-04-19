@@ -20,6 +20,9 @@ $css=<<<css
 	margin-right: 20px;
 }
 </style>
+<style>.errorMsg{color: red; margin-left: 15px;}</style>
+<style>.padtop {padding-top: 10px;}</style>
+
 css;
 
 $nav=<<<HTML

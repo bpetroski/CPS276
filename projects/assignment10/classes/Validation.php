@@ -10,6 +10,8 @@ class Validation{
 		switch($regex){
 			case "name": return $this->name($value); break;
 			case "phone": return $this->phone($value); break;
+			case "address": return $this->address($value); break;
+			case "email": return $this->email($value); break;
 			
 			
 		}
@@ -28,7 +30,17 @@ class Validation{
 		return $this->setError($match);
 	}
 
-	
+	private function address($value){
+		/* regex checks for leading numbers (more than single digitis) single word with any character (ex: N.) and then 1-4 main words for the street name and then finally makes sure the string ends with a word ending with any regular character. */
+		$match = preg_match('/^(\d{2,})(\s\w.\s)?(\b\w*(-?\w*?)\b\s){1,4}(\w*.$)/im', $value);
+		return $this->setError($match);
+	}
+
+	private function email($value){
+		$match = preg_match('/^\S+@\S+\.\S+$/i', $value);
+		return $this->setError($match);
+	}
+
 	private function setError($match){
 		if(!$match){
 			$this->error = true;
