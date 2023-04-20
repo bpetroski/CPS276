@@ -54,13 +54,7 @@ $elementsArr = [
     "value"=>"999.999.9999",
     "regex"=>"phone"
   ],
-/* 
-  "CONTACT"=>[
-    "errorMessage"=>"",
-    "type"=>"text",
-    "regex"=>"email"
-  ],
- */
+
   "address"=>[
     "errorMessage"=>"<span class='errorMsg'>Address must be valid</span>",
     "errorOutput"=>"",
@@ -92,6 +86,14 @@ $elementsArr = [
     "regex"=>"email" 
   ],
 
+  "date"=>[
+    "errorMessage"=>"<span class='errorMsg'>Please enter in a valid, non-blank city name</span>",
+    "errorOutput"=>"",
+    "type"=>"text",
+    "value"=>"07/11/2001",
+    "regex"=>"date"
+  ],
+
   "contactMethod"=>[
     "errorMessage"=>"<span class='errorMsg'>There was an error</span>",
     "errorOutput"=>"",
@@ -109,53 +111,43 @@ $elementsArr = [
 ];
 
 
-// /*THIS FUNCTION CAN BE CALLED TO ADD DATA TO THE DATABASE */
-// function addData($post){
-//   global $elementsArr;  
-//   /* IF EVERYTHING WORKS ADD THE DATA HERE TO THE DATABASE HERE USING THE $_POST SUPER GLOBAL ARRAY */
-//       //print_r($_POST);
-//       require_once('classes/Pdo_methods.php');
+/*THIS FUNCTION CAN BE CALLED TO ADD DATA TO THE DATABASE */
+function addData($post){
+  global $elementsArr;  
+  /* IF EVERYTHING WORKS ADD THE DATA HERE TO THE DATABASE HERE USING THE $_POST SUPER GLOBAL ARRAY */
+      //print_r($_POST);
+      require_once('classes/Pdo_methods.php');
 
-//       $pdo = new PdoMethods();
+      $pdo = new PdoMethods();
 
-//       $sql = "INSERT INTO contactMod (name, phone, state, financial, eye) VALUES (:name, :phone, :state, :financial, :eye)";
+      $sql = "INSERT INTO contactMod (name, phone, state, financial, eye) VALUES (:name, :phone, :state, :financial, :eye)";
 
-//       /* THIS TAKE THE ARRAY OF CHECK BOXES AND PUT THE VALUES INTO A STRING SEPERATED BY COMMAS  */
-//       if(isset($_POST['financial'])){
-//         $financial = "";
-//         foreach($post['financial'] as $v){
-//           $financial .= $v.",";
-//         }
-//         /* REMOVE THE LAST COMMA FROM THE CONTACTS */
-//         $financial = substr($financial, 0, -1);
-//       }
-
-//       if(isset($_POST['eyeColor'])){
-//         $eyeColor = $_POST['eyeColor'];
-//       }
-//       else {
-//         $eyeColor = "";
-//       }
+      if(isset($_POST['eyeColor'])){
+        $eyeColor = $_POST['eyeColor'];
+      }
+      else {
+        $eyeColor = "";
+      }
 
 
-//       $bindings = [
-//         [':name',$post['name'],'str'],
-//         [':phone',$post['phone'],'str'],
-//         [':state',$post['state'],'str'],
-//         [':financial',$financial,'str'],
-//         [':eye',$eyeColor,'str']
-//       ];
+      $bindings = [
+        [':name',$post['name'],'str'],
+        [':phone',$post['phone'],'str'],
+        [':state',$post['state'],'str'],
+        [':financial',$post['name'],'str'],
+        [':eye',$eyeColor,'str']
+      ];
 
-//       $result = $pdo->otherBinded($sql, $bindings);
+      $result = $pdo->otherBinded($sql, $bindings);
 
-//       if($result == "error"){
-//         return getForm("<p>There was a problem processing your form</p>", $elementsArr);
-//       }
-//       else {
-//         return getForm("<p>Contact Information Added</p>", $elementsArr);
-//       }
+      if($result == "error"){
+        return getForm("<p>There was a problem processing your form</p>", $elementsArr);
+      }
+      else {
+        return getForm("<p>Contact Information Added</p>", $elementsArr);
+      }
       
-// }
+}
   
 
 /*THIS IS THEGET FROM FUCTION WHICH WILL BUILD THE FORM BASED UPON UPON THE (UNMODIFIED OF MODIFIED) ELEMENTS ARRAY. */
@@ -191,12 +183,12 @@ $form = <<<HTML
     </div>
     <div class="form-group"> <!-- email input -->
       <label for="email-address">Email {$elementsArr['email']['errorOutput']}</label>
-      <input type="text" class="form-control" id="email-address" name="email-address" value="{$elementsArr['email']['value']}" >
+      <input type="text" class="form-control" id="email" name="email" value="{$elementsArr['email']['value']}" >
     </div>
-    <!-- <div class="form-group">
-      <label for="DOB">Date of Birth</label>
-      <input type="date" class="form-control" id="dataTime" name="dateTime">
-    </div> -->
+    <div class="form-group">  <!-- DOB -->
+      <label for="DOB">Date of Birth {$elementsArr['date']['errorOutput']}</label>
+      <input type="text" class="form-control" id="date" name="date" value="{$elementsArr['date']['value']}">
+    </div>
     <p>Please check all contact options (optional):{$elementsArr['contactMethod']['errorOutput']}</p>
     <span> <!--contact method checkboxes-->
       <div class="form-check form-check-inline">
