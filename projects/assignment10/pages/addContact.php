@@ -1,7 +1,4 @@
  <?php
-    // function init(){
-    //     return ["<h1>Add Contacts</h1>","<p>this is the page where you - add contacts</p>"];
-    // }
 
 require_once('classes/StickyForm.php');
 $stickyForm = new StickyForm();

@@ -21,6 +21,21 @@
         } 
     }
 
+   $elementsArr = [
+	"masterStatus"=>[
+	  "status"=>"noerrors",
+	  "type"=>"masterStatus"
+	],
+	"username"=>[
+	  "type"=>"text",
+	  "value"=>"" 
+	],
+	"password"=>[
+	  "type"=>"text",
+	  "value"=>""
+	]
+   ];
+
 
     function getForm($acknowledgement, $elementsArr){
         global $stickyForm;
