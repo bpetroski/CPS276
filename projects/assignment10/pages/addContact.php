@@ -158,6 +158,7 @@ $options = $stickyForm->createOptions($elementsArr['state']);
 
 /* THIS IS A HEREDOC STRING WHICH CREATES THE FORM AND ADD THE APPROPRIATE VALUES AND ERROR MESSAGES */
 $form = <<<HTML
+    <h1>Add Contact</h1>
     <form method="post" action="index.php?page=addContact">
     <div class="form-group"> <!-- name input -->
       <label for="name">Name (letters only){$elementsArr['name']['errorOutput']}</label>
@@ -186,7 +187,7 @@ $form = <<<HTML
       <input type="text" class="form-control" id="email" name="email" value="{$elementsArr['email']['value']}" >
     </div>
     <div class="form-group">  <!-- DOB -->
-      <label for="DOB">Date of Birth {$elementsArr['date']['errorOutput']}</label>
+      <label for="DOB">Date of Birth (MM/DD/YYYY) {$elementsArr['date']['errorOutput']}</label>
       <input type="text" class="form-control" id="date" name="date" value="{$elementsArr['date']['value']}">
     </div>
     <p>Please check all contact options (optional):{$elementsArr['contactMethod']['errorOutput']}</p>

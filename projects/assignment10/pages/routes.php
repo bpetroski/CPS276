@@ -43,7 +43,7 @@ $adminNav=<<<HTML
             <li><a href="index.php?page=addContact">Add Contact</a></li>
             <li><a href="index.php?page=deleteContacts">Delete contact(s)</a></li>    
             <li><a href="index.php?page=addAdmin">Add Admin</a></li>
-            <li><a href="index.php?page=deleteAdmin">Delete Admin(s)</a></li> 
+            <li><a href="index.php?page=deleteAdmins">Delete Admin(s)</a></li> 
             <li><a href="logout.php">Logout</a></li>    
    
         </ul>
