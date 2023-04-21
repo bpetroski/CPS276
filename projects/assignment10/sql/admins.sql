@@ -6,7 +6,7 @@ CREATE TABLE admins (
     admin_password  char(255)   NOT NULL,
     admin_status    char(255)   NOT NULL, -- either 'admin' or 'staff'
     PRIMARY KEY (admin_id)
-)ENGINE=InfoID;
+)ENGINE=InnoDB;
 
 INSERT INTO admins(admin_name, admin_email, admin_password, admin_status)
 VALUES ('Brenden Petroski', 'bjpetroski@wccnet.edu', '$2y$10$YB3QWJyvqVgP5wkLU9TOdu7DzFsvuIuaAnQ5X4yb9hFSrOVqGS2o2', 'admin');
