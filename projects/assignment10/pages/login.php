@@ -26,7 +26,7 @@
 	  "status"=>"noerrors",
 	  "type"=>"masterStatus"
 	],
-	"username"=>[
+	"email"=>[
 	  "type"=>"text",
 	  "value"=>"" 
 	],
@@ -41,10 +41,11 @@
         global $stickyForm;
 
         $loginForm=<<<HTML
+            <h1>Login</h1>
             <form name="login" action="index.php" method="post">
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" name="username" id="username" required>
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="email" id="email" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
