@@ -20,7 +20,8 @@ $css=<<<css
 	margin-right: 20px;
 }
 </style>
-<style>.errorMsg{color: red; margin-left: 15px;}</style>
+<style>.errorMsg span{color: red; margin-left: 15px;} .errorMsg{color: red;}</style>
+<style>.successMsg{color: green;}</style>
 <style>.padtop {padding-top: 10px;}</style>
 
 css;

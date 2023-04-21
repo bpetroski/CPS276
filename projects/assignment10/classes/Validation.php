@@ -13,6 +13,7 @@ class Validation{
 			case "address": return $this->address($value); break;
 			case "email": return $this->email($value); break;
 			case "date": return $this->date($value); break;
+			case "password": return $this->password($value); break;
 			
 			
 		}
@@ -44,6 +45,10 @@ class Validation{
 
 	private function date($value){
 		$match = preg_match('/([1-9]|0[1-9]|1[012]).([1-9]|0[1-9]|1[0-9]|2[0-9]|3[01]).([12][0-99])?([0-9]{2})$/m' , $value);
+		return $this->setError($match);
+	}
+	private function password($value){
+		$match = preg_match('/[[:alnum:]]{8,50}[*.!@#$%^&():;<>,.?~_+-=|]{0,10}/i', $value);
 		return $this->setError($match);
 	}
 

@@ -35,6 +35,21 @@ $elementsArr = [
     "type"=>"text",
     "value"=>"bjpetroski@wccnet.edu",
     "regex"=>"email"
+  ],
+  "password"=>[
+    "errorMessage"=>"<span class='errorMsg'>Please choose a strong password</span>",
+    "errorOutput"=>"",
+    "type"=>"text",
+    "value"=>"password",
+    "regex"=>"password"
+  ],
+  "status"=>[
+    "errorMessage"=>"<span class='errorMsg'>There was an error</span>",
+    "errorOutput"=>"",
+    "type"=>"select",
+    "options"=>["admin"=>"Admin","staff"=>"Staff"],
+    "selected"=>"staff",
+    "regex"=>"name"
   ]
 ];
 
@@ -43,8 +58,16 @@ function addData($post){
   require_once('classes/Pdo_methods.php');
   $pdo = new PdoMethods();
 
-  $sql = "INSERT INTO admins (admin_name, admin_email, admin_password, admin_status) VALUES (:name, :email, :password, :status)";
+  $sql = "SELECT admin_email FROM admins WHERE admin_email = :email";
+  $bindings = [[':email',$post['email'],'str']];
 
+  $records = $pdo->selectBinded($sql,$bindings);
+  /* SQL error message vvv */
+  if($records == 'error'){return getForm("<p class='errorMsg'>There was an error processing your request.</p>", $elementsArr);}
+  /* email already in use error msg vvv */
+  if(count($records) != 0){return getForm("<p class='errorMsg'>Email already in use.</p>", $elementsArr);}
+
+  $sql = "INSERT INTO admins (admin_name, admin_email, admin_password, admin_status) VALUES (:name, :email, :password, :status)";
   $bindings = [
     [':name',$post['name'],'str'],
     [':email',$post['email'],'str'],
@@ -57,14 +80,14 @@ function addData($post){
   if($result == "error"){
     return getForm("<p class='errorMsg'>There was a problem processing your form.</p>", $elementsArr);
   }else{
-    return getForm("<p>Contact Information Added</p>", $elementsArr);
+    return getForm("<p class='successMsg'>Contact Information Added</p>", $elementsArr);
   }
 
 }
 
 function getForm($acknowledgement, $elementsArr){
   global $stickyForm;
-//  $options = $stickyForm->createOptions($elementsArr['status']);
+ $options = $stickyForm->createOptions($elementsArr['status']);
 
   $form = <<<HTML
     <h1>Add Admin</h1>
@@ -78,12 +101,22 @@ function getForm($acknowledgement, $elementsArr){
         <input type="text" class="form-control" id="email" name="email" value="{$elementsArr['email']['value']}">
       </div>
       <div class="form-group">
-        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        <label for="password">Password {$elementsArr['password']['errorOutput']}</label>
+        <input type="password" class="form-control" id="password" name="password" value="{$elementsArr['password']['value']}">
+      </div>
+      <div class="form-group">
+        <label for="status">Status {$elementsArr['status']['errorOutput']}</label>
+        <select class="form-control" id="status" name="status">
+          $options
+        </select>
+      </div>
+      <div class="form-group">
+        <button type="submit" name="submit" id="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
   HTML;
 
-  return [$acknowledgement, $elementsArr];
+  return [$acknowledgement, $form]; /* I spent at least an hour debugging this page because I put $elementsArr where $form is on accident */
 }
 
 ?>    
