@@ -112,9 +112,9 @@ function addData($post){
   if(isset($post['contactMethod'])){
     $contactMethods = "";
     foreach($post['contactMethod'] as $v){
-      $contactMethods .= $v.",";
+      $contactMethods .= $v."<br>";
     }
-    $contactMethods = substr($contactMethods, 0,-1);
+    // $contactMethods = substr($contactMethods, 0,-1);
   }else{
     $contactMethods = "no contact";
   }
