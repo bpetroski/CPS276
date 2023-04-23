@@ -71,7 +71,7 @@ class Validation{
 	public function login($post){
 		require_once 'classes/Pdo_methods.php';
 		$pdo = new PdoMethods();
-		$sql = "SELECT admin_email, admin_password FROM admins WHERE admin_email = :email";
+		$sql = "SELECT admin_email, admin_name, admin_password, admin_status FROM admins WHERE admin_email = :email";
 		$bindings = [[':email',$post['email'],'str']];
 
 		$records = $pdo->selectBinded($sql, $bindings);
@@ -80,6 +80,8 @@ class Validation{
 			if(password_verify($post['password'], $records[0]['admin_password'])){
 				session_start();
 				$_SESSION['access'] = "accessGranted";
+				$_SESSION['name'] = $records[0]['admin_name'];
+				$_SESSION['status'] = $records[0]['admin_status'];
 				return "success"; /* this shouldn't ever show up */
 			}else{
 				return "<p class='errorMsg'>Invalid credentials.</p>"; /* password doesn't match */

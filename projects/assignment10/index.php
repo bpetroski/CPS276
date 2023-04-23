@@ -17,7 +17,7 @@ require_once('pages/routes.php');
 	<body class="container">
 		<?php
 			/* THIS IS THE PHP PAGE  */
-			echo $adminNav;
+			echo $nav;
 			
 			/* THE ACKNOWLEDGEMENT GOES HERE AS THE FIRST INDEX OF THE ARRAY  */
 			echo $result[0]; 

@@ -1,4 +1,8 @@
 <?php
+require_once 'classes/StickyForm.php';
+$stickyForm = new StickyForm(); 
+$nav = "";
+
 
 $path = "index.php?page=login";
 
@@ -26,30 +30,37 @@ $css=<<<css
 
 css;
 
-$nav=<<<HTML
-    $css
-    <nav>
-        <ul class="nav-header">
-            <li><a href="index.php?page=addContact">Add Contact</a></li>
-            <li><a href="index.php?page=deleteContacts">Delete contact(s)</a></li>  
-            <li><a href="logout.php">Logout</a></li>   
-        </ul>
-    </nav>
-HTML;
-
-$adminNav=<<<HTML
-    $css
-    <nav>
-        <ul class="nav-header">
-            <li><a href="index.php?page=addContact">Add Contact</a></li>
-            <li><a href="index.php?page=deleteContacts">Delete contact(s)</a></li>    
-            <li><a href="index.php?page=addAdmin">Add Admin</a></li>
-            <li><a href="index.php?page=deleteAdmins">Delete Admin(s)</a></li> 
-            <li><a href="logout.php">Logout</a></li>    
-   
-        </ul>
-    </nav>
-HTML;
+session_start();
+if(isset($_SESSION['access'])){
+    if($_SESSION['access'] == "accessGranted"){
+        if($_SESSION['status'] == "admin"){
+            $nav=<<<HTML
+            $css
+            <nav>
+                <ul class="nav-header">
+                    <li><a href="index.php?page=addContact">Add Contact</a></li>
+                    <li><a href="index.php?page=deleteContacts">Delete contact(s)</a></li>    
+                    <li><a href="index.php?page=addAdmin">Add Admin</a></li>
+                    <li><a href="index.php?page=deleteAdmins">Delete Admin(s)</a></li> 
+                    <li><a href="logout.php">Logout</a></li>    
+                </ul>
+            </nav>
+            HTML;
+        }else if($_SESSION['status'] == "staff"){
+            $nav=<<<HTML
+            $css
+            <nav>
+                <ul class="nav-header">
+                    <li><a href="index.php?page=addContact">Add Contact</a></li>
+                    <li><a href="index.php?page=deleteContacts">Delete contact(s)</a></li>  
+                    <li><a href="logout.php">Logout</a></li>   
+                </ul>
+            </nav>
+            HTML;
+        }
+    }
+}
+session_abort();
 
 if(isset($_GET)){
     if($_GET['page'] === "welcome"){

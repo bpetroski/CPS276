@@ -1,8 +1,7 @@
 <?php
-
     require_once('classes/StickyForm.php');
-    $stickyForm = new StickyForm();
-
+    $stickyForm = new StickyForm(); 
+    
     function init(){
         global $elementsArr, $stickyForm;
       
