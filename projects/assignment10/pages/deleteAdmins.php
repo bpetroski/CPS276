@@ -1,19 +1,9 @@
 <?php
     require_once 'classes/StickyForm.php';
     $stickyForm = new StickyForm(); $stickyForm->security();
-/*     
-    function init(){
-        return ["<h1>Delete Admins</h1>","<p>this is the page where you - delete admins</p>"];
-    }
- */
 
     function init(){
         require_once 'classes/Pdo_methods.php';
-        $pdo = new PdoMethods(); 
-        $output = ""; 
-        $sql = "SELECT * FROM admins";
-        $records = $pdo->selectNotBinded($sql);
-
         if(isset($_POST['delete'])){
             if(isset($_POST['chkbx'])){
                 $error = false;
@@ -25,9 +15,14 @@
                     $result = $pdo->otherBinded($sql, $bindings);
                     if($result === 'error'){$error = true; break;}
                 }
+            }else{
+                $msg = "<p class='errorMsg'>Please select an admin to delete.</p>";
             }
-            header('Location: index.php?page=deleteAdmins');
         }    
+        $pdo = new PdoMethods(); 
+        $output = ""; 
+        $sql = "SELECT * FROM admins";
+        $records = $pdo->selectNotBinded($sql);
 
         if(count($records) === 0){
             $output = "<p>There are no records to display</p>";

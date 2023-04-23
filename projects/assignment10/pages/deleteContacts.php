@@ -4,11 +4,6 @@
 
     function init(){
         require_once 'classes/Pdo_methods.php';
-        $pdo = new PdoMethods(); 
-        $output = ""; $msg = "";
-        $sql = "SELECT * FROM contacts";
-        $records = $pdo->selectNotBinded($sql);
-
         if(isset($_POST['delete'])){
             if(isset($_POST['chkbx'])){
                 $error = false;
@@ -24,6 +19,10 @@
                 $msg = "<p class='errorMsg'>please select a contact to delete.</p>";
             }
         }    
+        $pdo = new PdoMethods(); 
+        $output = "";
+        $sql = "SELECT * FROM contacts";
+        $records = $pdo->selectNotBinded($sql); /* I was literally typing up an email to ask for help when I realized the issue was that this needs to be called after deleting the contacts. */
 
         if(count($records) === 0){
             $output = "<p>There are no records to display</p>";
@@ -71,7 +70,7 @@
                 }
             }
             else {
-                // $msg="";
+                $msg="";
             }
             return [$msg, $output];
         }        
