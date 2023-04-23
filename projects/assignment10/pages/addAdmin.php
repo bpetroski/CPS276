@@ -37,7 +37,7 @@ $elementsArr = [
     "regex"=>"email"
   ],
   "password"=>[
-    "errorMessage"=>"<span class='errorMsg'>Please choose a strong password</span>",
+    "errorMessage"=>"<span class='errorMsg'>Please choose a strong password (8+ characters)</span>",
     "errorOutput"=>"",
     "type"=>"text",
     "value"=>"password",
@@ -80,7 +80,7 @@ function addData($post){
   if($result == "error"){
     return getForm("<p class='errorMsg'>There was a problem processing your form.</p>", $elementsArr);
   }else{
-    return getForm("<p class='successMsg'>Contact Information Added</p>", $elementsArr);
+    return getForm("<p class='successMsg'>Admin Added</p>", $elementsArr);
   }
 
 }
@@ -90,10 +90,9 @@ function getForm($acknowledgement, $elementsArr){
  $options = $stickyForm->createOptions($elementsArr['status']);
 
   $form = <<<HTML
-    <h1>Add Admin</h1>
     <form name="addAdmin" method="post" action="index.php?page=addAdmin">
       <div class="form-group">
-        <label for="name">Name (letters only){$elementsArr['name']['errorOutput']}</label>
+        <label for="name">Name (letters only) {$elementsArr['name']['errorOutput']}</label>
         <input type="text" class="form-control" id="name" name="name" value="{$elementsArr['name']['value']}">
       </div>
       <div class="form-group">

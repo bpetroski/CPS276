@@ -14,6 +14,7 @@ class Validation{
 			case "email": return $this->email($value); break;
 			case "date": return $this->date($value); break;
 			case "password": return $this->password($value); break;
+			case "nonBlank": return $this->nonBlank($value); break;
 			
 			
 		}
@@ -49,6 +50,10 @@ class Validation{
 	}
 	private function password($value){
 		$match = preg_match('/[[:alnum:]]{8,50}[*.!@#$%^&():;<>,.?~_+-=|]{0,10}/i', $value);
+		return $this->setError($match);
+	}
+	private function nonBlank($value){
+		$match = preg_match('/[[:alnum:]]{1,50}[*.!@#$%^&():;<>,.?~_+-=|]{0,10}/i', $value);
 		return $this->setError($match);
 	}
 

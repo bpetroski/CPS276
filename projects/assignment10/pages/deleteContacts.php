@@ -5,7 +5,7 @@
     function init(){
         require_once 'classes/Pdo_methods.php';
         $pdo = new PdoMethods(); 
-        $output = ""; 
+        $output = ""; $msg = "";
         $sql = "SELECT * FROM contacts";
         $records = $pdo->selectNotBinded($sql);
 
@@ -18,9 +18,15 @@
                     $bindings = [[':id', $id, 'int'],];
     
                     $result = $pdo->otherBinded($sql, $bindings);
-                    if($result === 'error'){$error = true; break;}
+                    if($result === 'error'){
+                        $msg = "<p>its broken</p>";
+                        $error = true; break;
+                    }else{
+                        $msg = "<p>Contact Deleted</p>";
+                    }
                 }
             }
+            header('Location: index.php?page=deleteContacts');
         }    
 
         if(count($records) === 0){
@@ -59,7 +65,7 @@
 
             $output .= "</tbody></table></form>";
 
-            if(isset($error)){
+/*             if(isset($error)){
                 if($error){
                     $msg = "<p>Could not delete the contact(s)</p>";
                 }
@@ -69,7 +75,7 @@
             }
             else {
                 $msg="";
-            }
+            } */
             return [$msg, $output];
 
         }        

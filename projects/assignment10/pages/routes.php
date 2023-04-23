@@ -1,8 +1,6 @@
 <?php
 require_once 'classes/StickyForm.php';
 $stickyForm = new StickyForm(); 
-$nav = "";
-
 
 $path = "index.php?page=login";
 
@@ -27,9 +25,10 @@ $css=<<<css
 <style>.errorMsg span{color: red; margin-left: 15px;} .errorMsg{color: red;}</style>
 <style>.successMsg{color: green;}</style>
 <style>.padtop {padding-top: 10px;}</style>
-
 css;
 
+$nav = $css;
+// $header = $_GET['page'];
 session_start();
 if(isset($_SESSION['access'])){
     if($_SESSION['access'] == "accessGranted"){
@@ -65,26 +64,32 @@ session_abort();
 if(isset($_GET)){
     if($_GET['page'] === "welcome"){
         require_once('pages/welcome.php');
+        $nav .= "<h1>Welcome</h1>";
         $result = init();
     }
     else if($_GET['page'] === "login"){
         require_once('pages/login.php');
+        $nav .= "<h1>Login</h1>";
         $result = init();
     }
     else if($_GET['page'] === "addAdmin"){
         require_once('pages/addAdmin.php');
+        $nav .= "<h1>Add Admin</h1>";
         $result = init();
     }
     else if($_GET['page'] === "addContact"){
         require_once('pages/addContact.php');
+        $nav .= "<h1>Add Contact</h1>";
         $result = init();
     }
     else if($_GET['page'] === "deleteAdmins"){
         require_once('pages/deleteAdmins.php');
+        $nav .= "<h1>Delete Admin(s)</h1>";
         $result = init();
     }
     else if($_GET['page'] === "deleteContacts"){
         require_once('pages/deleteContacts.php');
+        $nav .= "<h1>Delete Contact(s)</h1>";
         $result = init();
     }
     else {

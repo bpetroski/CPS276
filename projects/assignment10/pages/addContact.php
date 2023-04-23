@@ -39,7 +39,7 @@ $elementsArr = [
       "regex"=>"name"
 	],
 	"phone"=>[
-    "errorMessage"=>"<span class='errorMsg'>Phone cannot be blank and must be a valid phone number</span>",
+    "errorMessage"=>"<span class='errorMsg'>Phone cannot be blank and must be formatted as 999.999.9999</span>",
     "errorOutput"=>"",
     "type"=>"text",
     "value"=>"999.999.9999",
@@ -47,7 +47,7 @@ $elementsArr = [
   ],
 
   "address"=>[
-    "errorMessage"=>"<span class='errorMsg'>Address must be valid</span>",
+    "errorMessage"=>"<span class='errorMsg'>Address cannot be blank and must be a valid address</span>",
     "errorOutput"=>"",
     "type"=>"text",
     "value"=>"123 Main Street",
@@ -147,7 +147,6 @@ function getForm($acknowledgement, $elementsArr){
 
   /* THIS IS A HEREDOC STRING WHICH CREATES THE FORM AND ADD THE APPROPRIATE VALUES AND ERROR MESSAGES */
   $form = <<<HTML
-      <h1>Add Contact</h1>
       <form method="post" action="index.php?page=addContact">
       <div class="form-group"> <!-- name input -->
         <label for="name">Name (letters only){$elementsArr['name']['errorOutput']}</label>
@@ -168,7 +167,7 @@ function getForm($acknowledgement, $elementsArr){
         </select>
       </div>
       <div class="form-group"> <!-- phone input -->
-        <label for="phone">Phone (format 999.999.9999) {$elementsArr['phone']['errorOutput']}</label>
+        <label for="phone">Phone {$elementsArr['phone']['errorOutput']}</label>
         <input type="text" class="form-control" id="phone" name="phone" value="{$elementsArr['phone']['value']}" >
       </div>
       <div class="form-group"> <!-- email input -->

@@ -3,6 +3,6 @@
     $stickyForm = new StickyForm(); $stickyForm->security();
 
     function init(){
-        return ["<h1>Welcome</h1>", $_SESSION['name']];
+        return ["", "Welcome ".$_SESSION['name']];
     }
 ?>    

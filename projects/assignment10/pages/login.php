@@ -35,11 +35,11 @@
       "regex"=>"email" 
 	],
 	"password"=>[
-      "errorMessage"=>"<span class='errorMsg'>Invalid credentials</span>",
+      "errorMessage"=>"<span class='errorMsg'>Password must not be blank</span>",
       "errorOutput"=>"",
 	  "type"=>"text",
 	  "value"=>"password",
-      "regex"=>"password"
+      "regex"=>"nonBlank"
 	]
    ];
 
@@ -48,7 +48,6 @@
         global $stickyForm;
 
         $loginForm=<<<HTML
-            <h1>Login</h1>
             <form name="login" action="index.php?page=login" method="post">
                 <div class="form-group">
                     <label for="email">Email {$elementsArr['email']['errorOutput']}</label>
