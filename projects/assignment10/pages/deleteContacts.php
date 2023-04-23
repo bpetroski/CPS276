@@ -18,15 +18,11 @@
                     $bindings = [[':id', $id, 'int'],];
     
                     $result = $pdo->otherBinded($sql, $bindings);
-                    if($result === 'error'){
-                        $msg = "<p>its broken</p>";
-                        $error = true; break;
-                    }else{
-                        $msg = "<p>Contact Deleted</p>";
-                    }
+                    if($result === 'error'){$error = true; break;}
                 }
+            }else{
+                $msg = "<p class='errorMsg'>please select a contact to delete.</p>";
             }
-            header('Location: index.php?page=deleteContacts');
         }    
 
         if(count($records) === 0){
@@ -65,7 +61,8 @@
 
             $output .= "</tbody></table></form>";
 
-/*             if(isset($error)){
+            // $msg = "msg wont work";
+            if(isset($error)){
                 if($error){
                     $msg = "<p>Could not delete the contact(s)</p>";
                 }
@@ -74,10 +71,9 @@
                 }
             }
             else {
-                $msg="";
-            } */
+                // $msg="";
+            }
             return [$msg, $output];
-
         }        
     }
 ?>    
