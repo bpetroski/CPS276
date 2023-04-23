@@ -52,10 +52,10 @@
 
             if(isset($error)){
                 if($error){
-                    $msg = "<p>Could not delete the admin(s)</p>";
+                    $msg = "<p class='errorMsg'>Could not delete the admin(s)</p>";
                 }
                 else {
-                    $msg = "<p>Admin(s) deleted</p>";
+                    $msg = "<p class='successMsg'>Admin(s) deleted</p>";
                 }
             }
             else {

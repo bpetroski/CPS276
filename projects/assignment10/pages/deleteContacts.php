@@ -63,10 +63,10 @@
             // $msg = "msg wont work";
             if(isset($error)){
                 if($error){
-                    $msg = "<p>Could not delete the contact(s)</p>";
+                    $msg = "<p class='errorMsg'>Could not delete the contact(s)</p>";
                 }
                 else {
-                    $msg = "<p>Contact(s) deleted</p>";
+                    $msg = "<p class='successMsg'>Contact(s) deleted</p>";
                 }
             }
             else {
