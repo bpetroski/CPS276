@@ -3,17 +3,19 @@
     require_once('classes/StickyForm.php');
     $stickyForm = new StickyForm();
 
-
     function init(){
         global $elementsArr, $stickyForm;
       
-        if(isset($_POST['login'])){
+        if(isset($_POST['login'])){ 
             $postArr = $stickyForm->validateForm($_POST, $elementsArr);
+            $loginOutput = $stickyForm->login($_POST);
+
             if($postArr['masterStatus']['status'] == "noerrors"){
-                return addData($_POST);
+                if($loginOutput === 'success'){header('Location: index.php?page=welcome');}
+                return getForm($loginOutput, $postArr);
             }
             else{
-                return getForm("",$postArr);
+               return getForm("",$postArr);
             }
         }
         else {
@@ -27,12 +29,18 @@
 	  "type"=>"masterStatus"
 	],
 	"email"=>[
+      "errorMessage"=>"<span class='errorMsg'>Please enter in a valid email</span>",
+      "errorOutput"=>"",
 	  "type"=>"text",
-	  "value"=>"" 
+	  "value"=>"bjpetroski@wccnet.edu",
+      "regex"=>"email" 
 	],
 	"password"=>[
+      "errorMessage"=>"<span class='errorMsg'>Invalid credentials</span>",
+      "errorOutput"=>"",
 	  "type"=>"text",
-	  "value"=>""
+	  "value"=>"password",
+      "regex"=>"password"
 	]
    ];
 
@@ -42,14 +50,14 @@
 
         $loginForm=<<<HTML
             <h1>Login</h1>
-            <form name="login" action="index.php" method="post">
+            <form name="login" action="index.php?page=login" method="post">
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" class="form-control" name="email" id="email" required>
+                    <label for="email">Email {$elementsArr['email']['errorOutput']}</label>
+                    <input type="text" class="form-control" name="email" id="email" value="{$elementsArr['email']['value']}">
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" name="password" id="password" required>
+                    <label for="password">Password {$elementsArr['password']['errorOutput']}</label>
+                    <input type="password" class="form-control" name="password" id="password" value="{$elementsArr['password']['value']}">
                 </div>
                 <div class="form-group padtop">
                     <input type="submit" class="btn btn-primary" name="login" id="login" value="Log In">

@@ -1,6 +1,6 @@
 <?php
 
-$path = "index.php?page=welcome";
+$path = "index.php?page=login";
 
 $css=<<<css
 <style>

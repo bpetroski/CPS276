@@ -1,8 +1,11 @@
 <?php
+    require_once 'classes/StickyForm.php';
+    $stickyForm = new StickyForm(); $stickyForm->security();
+
     function init(){
         require_once 'classes/Pdo_methods.php';
-        $output = "";
-        $pdo = new PdoMethods();
+        $pdo = new PdoMethods(); 
+        $output = ""; 
         $sql = "SELECT * FROM contacts";
         $records = $pdo->selectNotBinded($sql);
 

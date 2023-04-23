@@ -68,4 +68,30 @@ class Validation{
 		return $this->error;
 	}
 	
+	public function login($post){
+		require_once 'classes/Pdo_methods.php';
+		$pdo = new PdoMethods();
+		$sql = "SELECT admin_email, admin_password FROM admins WHERE admin_email = :email";
+		$bindings = [[':email',$post['email'],'str']];
+
+		$records = $pdo->selectBinded($sql, $bindings);
+
+		if(count($records) != 0){
+			if(password_verify($post['password'], $records[0]['admin_password'])){
+				session_start();
+				$_SESSION['access'] = "accessGranted";
+				return "success"; /* this shouldn't ever show up */
+			}else{
+				return "<p class='errorMsg'>Invalid credentials.</p>"; /* password doesn't match */
+			}
+		}else{
+			return "<p class='errorMsg'>Invalid credentials</p>"; /* no records */
+		}
+		
+	}
+
+	public function security(){
+		session_start();
+		if($_SESSION['access'] !== "accessGranted"){header('location: index.php?page=login');}
+	}
 }
