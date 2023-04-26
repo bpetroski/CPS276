@@ -64,7 +64,7 @@ $elementsArr = [
    
   "state"=>[
     "type"=>"select",
-    "options"=>["mi"=>"Michigan","oh"=>"Ohio","pa"=>"Pennslyvania","tx"=>"Texas"],
+    "options"=>["mi"=>"Michigan","oh"=>"Ohio","pa"=>"Pennslyvania","tx"=>"Texas", "fl"=>"Florida"],
 		"selected"=>"mi",
 		"regex"=>"name"
 	],
@@ -93,11 +93,11 @@ $elementsArr = [
     "status"=>["Newsletter"=>"", "Email"=>"", "SMS"=>""]
   ],
   "ageGroup"=>[
-    "errorMessage"=>"<span class='errorMsg'>You must select at least one age group option</span>",
+    "errorMessage"=>"<span class='errorMsg'>You must select an age range</span>",
     "errorOutput"=>"",
     "action"=>"required",
     "type"=>"radio",
-    "value"=>["10-18"=>"", "19-30"=>"checked", "30-50"=>"", "51+"=>""]
+    "value"=>["10-18"=>"", "19-30"=>"", "30-50"=>"", "51+"=>""]
   ]
 ];
 
