@@ -6,17 +6,17 @@
         require_once 'classes/Pdo_methods.php';
         if(isset($_POST['delete'])){
             if(isset($_POST['chkbx'])){
-                $error = false;
+                $error = "noError";
                 foreach($_POST['chkbx'] as $id){
                     $pdo = new PdoMethods();
                     $sql = "DELETE FROM contacts WHERE contact_id=:id";
                     $bindings = [[':id', $id, 'int'],];
     
                     $result = $pdo->otherBinded($sql, $bindings);
-                    if($result === 'error'){$error = true; break;}
+                    if($result === 'error'){$error = "error"; break;}
                 }
             }else{
-                $msg = "<p class='errorMsg'>please select a contact to delete.</p>";
+                $error = "noneSelected";
             }
         }    
         $pdo = new PdoMethods(); 
@@ -60,18 +60,21 @@
 
             $output .= "</tbody></table></form>";
 
-            // $msg = "msg wont work";
             if(isset($error)){
-                if($error){
-                    $msg = "<p class='errorMsg'>Could not delete the contact(s)</p>";
+                switch ($error){
+                    case 'noError':
+                        $msg = "<p class='successMsg'>Contact(s) deleted</p>";
+                        break;
+                    case 'noneSelected':
+                        $msg = "<p class='errorMsg'>Please select a contact to delete.</p>";
+                        break;
+                    default:
+                        $msg = "<p class='errorMsg'>Could not delete the contact(s)</p>";
                 }
-                else {
-                    $msg = "<p class='successMsg'>Contact(s) deleted</p>";
-                }
+            }else{
+                $msg = "";
             }
-            else {
-                $msg="";
-            }
+
             return [$msg, $output];
         }        
     }

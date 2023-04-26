@@ -35,7 +35,7 @@ $elementsArr = [
     "errorMessage"=>"<span class='errorMsg'>Name cannot be blank and must be a standard name</span>",
       "errorOutput"=>"",
       "type"=>"text",
-      "value"=>"Brenden",
+      "value"=>"Brenden Petroski",
       "regex"=>"name"
 	],
 	"phone"=>[
@@ -97,7 +97,7 @@ $elementsArr = [
     "errorOutput"=>"",
     "action"=>"required",
     "type"=>"radio",
-    "value"=>["10-18"=>"", "19-30"=>"", "30-50"=>"", "51+"=>""]
+    "value"=>["10-18"=>"", "19-30"=>"checked", "30-50"=>"", "51+"=>""]
   ]
 ];
 

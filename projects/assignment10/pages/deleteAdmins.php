@@ -6,17 +6,17 @@
         require_once 'classes/Pdo_methods.php';
         if(isset($_POST['delete'])){
             if(isset($_POST['chkbx'])){
-                $error = false;
+                $error = "noError";
                 foreach($_POST['chkbx'] as $id){
                     $pdo = new PdoMethods();
                     $sql = "DELETE FROM admins WHERE admin_id=:id";
                     $bindings = [[':id', $id, 'int'],];
     
                     $result = $pdo->otherBinded($sql, $bindings);
-                    if($result === 'error'){$error = true; break;}
+                    if($result === 'error'){$error = "error"; break;}
                 }
             }else{
-                $msg = "<p class='errorMsg'>Please select an admin to delete.</p>";
+                $error = "noneSelected";
             }
         }    
         $pdo = new PdoMethods(); 
@@ -51,15 +51,18 @@
             $output .= "</tbody></table></form>";
 
             if(isset($error)){
-                if($error){
-                    $msg = "<p class='errorMsg'>Could not delete the admin(s)</p>";
+                switch ($error){
+                    case 'noError':
+                        $msg = "<p class='successMsg'>Admin(s) deleted</p>";
+                        break;
+                    case 'noneSelected':
+                        $msg = "<p class='errorMsg'>Please select an admin to delete.</p>";
+                        break;
+                    default:
+                        $msg = "<p class='errorMsg'>Could not delete the admin(s)</p>";
                 }
-                else {
-                    $msg = "<p class='successMsg'>Admin(s) deleted</p>";
-                }
-            }
-            else {
-                $msg="";
+            }else{
+                $msg = "";
             }
             return [$msg, $output];
 

@@ -31,7 +31,7 @@
       "errorMessage"=>"<span class='errorMsg'>Please enter in a valid email</span>",
       "errorOutput"=>"",
 	  "type"=>"text",
-	  "value"=>"bjpetroski@wccnet.edu",
+	  "value"=>"bjpetroski@admin.com",
       "regex"=>"email" 
 	],
 	"password"=>[
