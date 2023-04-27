@@ -35,7 +35,7 @@ $elementsArr = [
     "errorMessage"=>"<span class='errorMsg'>Name cannot be blank and must be a standard name</span>",
       "errorOutput"=>"",
       "type"=>"text",
-      "value"=>"Brenden",
+      "value"=>"Brenden Petroski",
       "regex"=>"name"
 	],
 	"phone"=>[
@@ -64,7 +64,7 @@ $elementsArr = [
    
   "state"=>[
     "type"=>"select",
-    "options"=>["mi"=>"Michigan","oh"=>"Ohio","pa"=>"Pennslyvania","tx"=>"Texas"],
+    "options"=>["mi"=>"Michigan","oh"=>"Ohio","pa"=>"Pennslyvania","tx"=>"Texas", "fl"=>"Florida"],
 		"selected"=>"mi",
 		"regex"=>"name"
 	],
@@ -93,7 +93,7 @@ $elementsArr = [
     "status"=>["Newsletter"=>"", "Email"=>"", "SMS"=>""]
   ],
   "ageGroup"=>[
-    "errorMessage"=>"<span class='errorMsg'>You must select at least one age group option</span>",
+    "errorMessage"=>"<span class='errorMsg'>You must select an age range</span>",
     "errorOutput"=>"",
     "action"=>"required",
     "type"=>"radio",

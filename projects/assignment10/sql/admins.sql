@@ -9,9 +9,9 @@ CREATE TABLE admins (
 )ENGINE=InnoDB;
 
 INSERT INTO admins(admin_name, admin_email, admin_password, admin_status)
-VALUES ('Brenden Petroski', 'bjpetroski@wccnet.edu', '$2y$10$YB3QWJyvqVgP5wkLU9TOdu7DzFsvuIuaAnQ5X4yb9hFSrOVqGS2o2', 'admin');
+VALUES ('Brenden Petroski', 'bjpetroski@admin.com', '$2y$10$YB3QWJyvqVgP5wkLU9TOdu7DzFsvuIuaAnQ5X4yb9hFSrOVqGS2o2', 'admin');
 
 INSERT INTO admins(admin_name, admin_email, admin_password, admin_status)
-VALUES ('Scott Shaper', 'sshaper@wccnet.edu', '$2y$10$YB3QWJyvqVgP5wkLU9TOdu7DzFsvuIuaAnQ5X4yb9hFSrOVqGS2o2', 'staff');
+VALUES ('Brenden Petroski', 'bjpetroski@staff.com', '$2y$10$YB3QWJyvqVgP5wkLU9TOdu7DzFsvuIuaAnQ5X4yb9hFSrOVqGS2o2', 'staff');
 
 
