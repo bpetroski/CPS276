@@ -28,7 +28,7 @@ $css=<<<css
 css;
 
 $nav = $css;
-$pageTitle = $_GET['page'];
+// $pageTitle = $_GET['page'];
 session_start();
 if(isset($_SESSION['access'])){
     if($_SESSION['access'] == "accessGranted"){
